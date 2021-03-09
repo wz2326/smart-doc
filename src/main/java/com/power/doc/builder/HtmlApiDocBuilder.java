@@ -126,10 +126,10 @@ public class HtmlApiDocBuilder {
         PostmanJsonBuilder.buildPostmanCollection(config, javaProjectBuilder);
 
         try {
-            log.info(ClientUploadUtils.uploadData(config.getUploadUrl(), config.getProjectName(), apiDocList).string());
-//            log.info(ClientUploadUtils.upload(config.getUploadUrl(), config.getOutPath()+File.separator+"index.html", config.getProjectName()+"_index.html", config.getProjectName()).string());
-//            log.info(ClientUploadUtils.upload(config.getUploadUrl(), config.getOutPath()+File.separator+"AllInOne.css", "AllInOne.css", "").string());
-//            log.info(ClientUploadUtils.upload(config.getUploadUrl(), config.getOutPath()+File.separator+"search.js", "search.js", "").string());
+            log.info(ClientUploadUtils.uploadData(config.getUploadUrl()+"/save", config.getProjectName(), apiDocList).string());
+            log.info(ClientUploadUtils.upload(config.getUploadUrl()+"/upload", config.getOutPath()+File.separator+"index.html", config.getProjectName()+"_index.html", config.getProjectName()).string());
+            log.info(ClientUploadUtils.upload(config.getUploadUrl()+"/upload", config.getOutPath()+File.separator+"AllInOne.css", "AllInOne.css", "").string());
+            log.info(ClientUploadUtils.upload(config.getUploadUrl()+"/upload", config.getOutPath()+File.separator+"search.js", "search.js", "").string());
 
 //            log.info(ClientUploadUtils.upload(config.getUploadUrl(), config.getOutPath()+File.separator+"postman.json", config.getProjectName()+"_postman.json", config.getProjectName()).string());
         } catch (Exception e) {
