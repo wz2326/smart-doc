@@ -11,14 +11,20 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
  */
 public class ClientUploadUtils {
 
+    static long timeout = 60;
+
     public static ResponseBody upload(String url, String filePath, String fileName, String docName) throws Exception {
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder().connectTimeout(timeout, TimeUnit.SECONDS)//设置连接超时时间
+                .readTimeout(timeout, TimeUnit.SECONDS)//设置读取超时时间
+                .build();
+        ;
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("file", fileName,
@@ -39,7 +45,9 @@ public class ClientUploadUtils {
     }
 
     public static ResponseBody uploadData(String url, String projectName, List<ApiDoc> apiDocList) throws Exception {
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder().connectTimeout(timeout, TimeUnit.SECONDS)//设置连接超时时间
+                .readTimeout(timeout, TimeUnit.SECONDS)//设置读取超时时间
+                .build();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("projectName", projectName);
         jsonObject.add("apiDocList", new Gson().toJsonTree(apiDocList));

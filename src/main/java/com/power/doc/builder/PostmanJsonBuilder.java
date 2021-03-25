@@ -80,7 +80,7 @@ public class PostmanJsonBuilder {
      * @param projectBuilder QDOX avaProjectBuilder
      */
     public static void buildPostmanCollection(ApiConfig config, JavaProjectBuilder projectBuilder) {
-        log.info("config: " + config.toString());
+//        log.info("config: " + config.toString());
         DocBuilderTemplate builderTemplate = new DocBuilderTemplate();
         builderTemplate.checkAndInit(config);
         config.setParamsDataToTree(false);

@@ -31,7 +31,7 @@ public class HtmlApiDocTest {
         list.contains("aa");
         ApiConfig config = new ApiConfig();
         config.setServerUrl("http://localhost/");
-        config.setUploadUrl("http://localhost/manage/data/upload");
+        config.setUploadUrl("http://localhost/manage/doc");
         config.setStrict(false);
         config.setAllInOne(true);
         config.setOutPath("d:\\md3");
